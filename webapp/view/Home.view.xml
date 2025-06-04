@@ -1,0 +1,59 @@
+<mvc:View controllerName="marketingcampaignreqlist.zcrmktmarketingreqlist.controller.Home"
+   xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:smartList="sap.ui.comp.smartlist"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns="sap.m">
+    <Page id="_IDGenPage1" title="{i18n>title}">
+        <smartFilterBar:SmartFilterBar id="_IDGenSmartFilterBar" entitySet="RequestSet" showClearOnFB="false" advancedMode="false" showAllFilters="false" showMessages="false" showFilterConfiguration="false" useToolbar="false">
+                
+  
+                   <!-- <smartFilterBar:filterGroupItems>
+                   <filterbar:FilterGroupItem groupName="A" >
+                   <filterbar:control>
+                   </filterbar:control>
+                   </filterbar:FilterGroupItem>
+
+     
+
+    </smartFilterBar:filterGroupItems> -->
+    <DatePicker id="idDatePicker"></DatePicker>
+              <Button press="onPressNavigate"></Button>
+           
+
+    </smartFilterBar:SmartFilterBar>
+
+
+
+    <smartTable:SmartTable id="_IDGenSmartTable" entitySet="RequestSet" smartFilterId="_IDGenSmartFilterBar" initiallyVisibleFields="RequestId,Statu,InitiatedDate" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" beforeRebindTable="onBeforeRebind" editTogglable="true">
+        <!-- layout data used to make the table growing but the filter bar fixed -->
+
+
+        <!-- <Table id="manualTable" inset="false" items="{path: '/RequestSet'}">
+                    <columns>
+                        <Column>
+                            <Text text="Request ID"/>
+                        </Column>
+                        <Column>
+                            <Text text="Status"/>
+                        </Column>
+                        <Column>
+                            <Text text="Permit Type"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{RequestId}"/>
+                                <Text text="{Status}"/>
+                                <Text text="{PermitType}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table> -->
+
+    </smartTable:SmartTable>
+
+</Page>
+</mvc:View>

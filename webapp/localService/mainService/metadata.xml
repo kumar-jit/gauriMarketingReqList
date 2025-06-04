@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZCRM_MKT_MARKETING_CAMPAIGN_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RequestId"/>
+                </Key>
+                <Property Name="Remarks" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Comment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Request Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequesterId" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PermitType" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Permit Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InitiatedDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Initiated Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Request Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created At" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UpdatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Updated By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UpdatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Updated At" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Document" Relationship="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.RequestToDocuments" FromRole="FromRole_RequestToDocuments" ToRole="ToRole_RequestToDocuments"/>
+                <NavigationProperty Name="Approval" Relationship="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.RequestToApprovals" FromRole="FromRole_RequestToApprovals" ToRole="ToRole_RequestToApprovals"/>
+            </EntityType>
+            <EntityType Name="Document" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DmsDocId"/>
+                </Key>
+                <Property Name="DmsDocId" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="DMS Document ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Request Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DmsDocType" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="DMS Doc. Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocType" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Document Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created At" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UpdatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Updated By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UpdatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Updated At" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="File name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileContent" Type="Edm.String" Nullable="false" MaxLength="1024" sap:unicode="false" sap:label="XSTRING" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mimetype" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Mime type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserId"/>
+                </Key>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="SAP User Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Employee name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Designation" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Designation" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Department" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Grade" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Grade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Company code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Cost center" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Role" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Role" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Approval" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ApprovalId"/>
+                </Key>
+                <Property Name="ApprovalId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Approver ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Request Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ApproverId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Approver Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Action" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Action" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActionDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Action Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Remark" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Comment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created At" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UpdatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Updated By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UpdatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Updated At" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="RequestToApprovals" sap:content-version="1">
+                <End Type="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Request" Multiplicity="1" Role="FromRole_RequestToApprovals"/>
+                <End Type="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Approval" Multiplicity="*" Role="ToRole_RequestToApprovals"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestToApprovals">
+                        <PropertyRef Name="RequestId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestToApprovals">
+                        <PropertyRef Name="RequestId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RequestToDocuments" sap:content-version="1">
+                <End Type="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Request" Multiplicity="1" Role="FromRole_RequestToDocuments"/>
+                <End Type="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Document" Multiplicity="*" Role="ToRole_RequestToDocuments"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestToDocuments">
+                        <PropertyRef Name="RequestId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestToDocuments">
+                        <PropertyRef Name="RequestId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZCRM_MKT_MARKETING_CAMPAIGN_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="RequestSet" EntityType="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DocumentSet" EntityType="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Document" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="UserSet" EntityType="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.User" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ApprovalSet" EntityType="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.Approval" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="RequestToDocumentsSet" Association="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.RequestToDocuments" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestSet" Role="FromRole_RequestToDocuments"/>
+                    <End EntitySet="DocumentSet" Role="ToRole_RequestToDocuments"/>
+                </AssociationSet>
+                <AssociationSet Name="RequestToApprovalsSet" Association="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.RequestToApprovals" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestSet" Role="FromRole_RequestToApprovals"/>
+                    <End EntitySet="ApprovalSet" Role="ToRole_RequestToApprovals"/>
+                </AssociationSet>
+                <FunctionImport Name="Ztest_function" ReturnType="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.User" EntitySet="UserSet" m:HttpMethod="GET" sap:action-for="ZCRM_MKT_MARKETING_CAMPAIGN_SRV.User"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="http://10.10.1.30:8000/sap/opu/odata/sap/ZCRM_MKT_MARKETING_CAMPAIGN_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.10.1.30:8000/sap/opu/odata/sap/ZCRM_MKT_MARKETING_CAMPAIGN_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
