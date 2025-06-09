@@ -26,7 +26,7 @@ sap.ui.define([
                                 oBindingParams.filters.push(
                                     new sap.ui.model.Filter("RequesterId", sap.ui.model.FilterOperator.Contains,element[1]),
                                 )
-                            
+
                                 break;
                             case "RequestId":
                                 oBindingParams.filters.push(
@@ -53,16 +53,19 @@ sap.ui.define([
             },
             onSelectionChange(oEvent) {
                 const oModel = this.getView().getModel("filterModel");
-                const combTxt = oEvent.getSource().getSelectedItem().getProperty("text");
-                oModel.setProperty("/PermitType", combTxt);
-
+              let combTxt = oEvent.getSource()?.getSelectedItem()?.getProperty("text");
+                if(combTxt)
+                    oModel.setProperty("/PermitType", combTxt);
+                else{
+                    oModel.setProperty("/PermitType", "");
+                }
             },
 
             onColumnListItemPress(oEvent) {
                 const sPath = oEvent.getSource().getBindingContext().getPath()
                 const reqId = sPath.match(/\d+/)[0];
                 let CrossApplicationNavigation = sap.ushell.Container.getService("CrossApplicationNavigation");
-                CrossApplicationNavigation.hrefForExternal({
+                CrossApplicationNavigation.toExternal({
                     target: {
                         semanticObject: "ZMKTCAMP",
                         action: "display"
