@@ -6,7 +6,24 @@ sap.ui.define([
 
         return Controller.extend("marketingcampaignreqlist.zcrmktmarketingreqlist.controller.Home", {
             onInit: function () {
-
+                const oOwnComp = this.getOwnerComponent();
+                const oModel = oOwnComp.getModel();
+                const oFilterMdoel=oOwnComp.getModel("filterModel")
+                
+                let sUrl = "/UserSet('')"
+                oModel.read(sUrl, {
+                    success: function (oData) {
+                        if (oData.Role === "Approver") {
+                            oFilterMdoel.setProperty("/visible", true);
+                        }
+                        else if (oData.Role === "Marketing")
+                            oFilterMdoel.setProperty("/visible", false);
+                        oView.setBusy(false);
+                    },
+                    error: function (oError) {
+                        oView.setBusy(false);
+                    }
+                });
             },
             onBeforeRebind(oEvent) {
 
@@ -24,13 +41,13 @@ sap.ui.define([
                                 break;
                             case "RequesterId":
                                 oBindingParams.filters.push(
-                                    new sap.ui.model.Filter("RequesterId", sap.ui.model.FilterOperator.Contains, element[1]),
+                                    new sap.ui.model.Filter("CreatedBy", sap.ui.model.FilterOperator.Contains, element[1]),
                                 )
 
                                 break;
                             case "RequestId":
                                 oBindingParams.filters.push(
-                                    new sap.ui.model.Filter("RequestId", sap.ui.model.FilterOperator.Contains, element[1]),
+                                    new sap.ui.model.Filter("RequestId", sap.ui.model.FilterOperator.EQ, element[1]),
                                 )
                                 break;
                             case "InitiatedDate":
